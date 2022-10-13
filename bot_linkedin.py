@@ -73,12 +73,13 @@ class Linkedin_autoConnect:
         """
             Pesquisa pela palavra chave no linkedin
         """
-        self.search_input_exists = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
+        '''self.search_input_exists = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(
             (By.CLASS_NAME, "search-global-typeahead__input always-show-placeholder")))
         self.search_input = self.driver.find_element(
             By.XPATH, '//*[@class="search-global-typeahead__input always-show-placeholder"]')
         self.search_input.click()
-        self.search_input.send_keys(keyword)
+        self.search_input.send_keys(keyword)'''
+        self.get("https://www.linkedin.com/search/results/people/?network=%5B%22F%22%5D&origin=FACETED_SEARCH&page=" + str(keyword))
         self.search_input.send_keys(Keys.ENTER)
         self.filter_people_button = WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.XPATH, '//*[@aria-label="Pessoas"]')))
